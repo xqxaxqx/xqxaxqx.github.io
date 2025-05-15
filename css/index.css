@@ -1,35 +1,88 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background: linear-gradient(135deg, #ffe8fb 0%, #f3f9ff 100%);
-    padding: 30px;
-    min-height: 100vh;
-    position: relative;
-    overflow-x: hidden;
+	background: linear-gradient(135deg, #ffe8fb 0%, #f3f9ff 100%);
+	padding: 30px;
+	min-height: 100vh;
+	position: relative;
+	overflow-x: hidden;
+	display: flex;
+	justify-content: center;
+	gap: 20px;
 }
 
+/* 左右卡片样式 */
+.side-card {
+	flex: 1;
+	min-width: 150px;
+	background: white;
+	padding: 20px;
+	border-radius: 15px;
+	box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+	height: fit-content;
+}
+
+/* 中间容器 */
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    background: white;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    position: relative;
-    z-index: 1;
+	flex: 0 0 50%;
+	max-width: 800px;
+	background: white;
+	padding: 30px;
+	border-radius: 15px;
+	box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+	order: 2; 
 }
 
 h1 {
-    color: #ff69b4;
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 2.5em;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+	color: #ff69b4;
+	text-align: center;
+	margin-bottom: 20px;
+	font-size: 2.5em;
+	text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* 点击波纹效果 */
+.ripple {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    transform: scale(0);
+    animation: ripple 0.8s ease-out;
+    pointer-events: none;
+    filter: blur(2px);
+}
+
+@keyframes ripple {
+    0% {
+        opacity: 0.6;
+        transform: scale(0);
+    }
+    50% {
+        opacity: 0.3;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+}
+
+/* 卡片点击效果 */
+.side-card, .container {
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+}
+
+.side-card:active, .container:active {
+    transform: scale(0.99);
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
 }
 
 .snowflake {

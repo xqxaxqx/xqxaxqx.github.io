@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #ffe8fb 0%, #f3f9ff 100%);
+    padding: 30px;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    position: relative;
+    z-index: 1;
+}
+
+h1 {
+    color: #ff69b4;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2.5em;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.snowflake {
+    position: fixed;
+    top: -10px;
+    z-index: 0;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: snow-fall linear forwards;
+    filter: blur(1px);
+}
+
+.raindrop {
+    position: fixed;
+    top: -10px;
+    z-index: 0;
+    width: 1px;
+    height: 25px;
+    background: linear-gradient(to bottom, 
+        rgba(135, 206, 235, 0.6) 20%,
+        rgba(255, 255, 255, 0.2) 80%);
+    pointer-events: none;
+    animation: rain-fall linear forwards;
+    transform-origin: top;
+}
+
+.raindrop::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: -1px;
+    width: 3px;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+}
+
+@keyframes snow-fall {
+    to {
+        transform: translateY(105vh) translateX(50px);
+        opacity: 0.3;
+    }
+}
+
+@keyframes rain-fall {
+    to {
+        transform: translateY(105vh) translateX(5px) rotate(3deg);
+        opacity: 0;
+    }
+}
